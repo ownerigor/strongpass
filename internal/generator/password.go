@@ -1,4 +1,4 @@
-package main
+package generator
 
 import (
 	"crypto/rand"
@@ -6,10 +6,10 @@ import (
 )
 
 var (
-	lowercase = []rune("abcdefghijklmnopqrstuvwxyz")
-	uppercase = []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-	numbers   = []rune("0123456789")
-	symbols   = []rune("!@#$%^&*()_+-=[]{}|;:,.<>?")
+	Lowercase = []rune("abcdefghijklmnopqrstuvwxyz")
+	Uppercase = []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+	Numbers   = []rune("0123456789")
+	Symbols   = []rune("!@#$%^&*()_+-=[]{}|;:,.<>?")
 )
 
 func randomInt(max int64) int64 {
@@ -18,15 +18,15 @@ func randomInt(max int64) int64 {
 }
 
 func GeneratePassword(length int, useNumbers bool, useSymbols bool) string {
-	charset := append([]rune{}, lowercase...)
-	charset = append(charset, uppercase...)
+	charset := append([]rune{}, Lowercase...)
+	charset = append(charset, Uppercase...)
 
 	if useNumbers {
-		charset = append(charset, numbers...)
+		charset = append(charset, Numbers...)
 	}
 
 	if useSymbols {
-		charset = append(charset, symbols...)
+		charset = append(charset, Symbols...)
 	}
 
 	password := make([]rune, length)
